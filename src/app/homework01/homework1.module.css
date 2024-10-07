@@ -1,0 +1,39 @@
+.openBtn{
+    padding-inline: 70px;
+    padding-block: 35px;
+    border-radius: 10px;
+    font-size: 45px;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.closeBtn{
+    padding-inline: 20%;
+    padding-block:5%;
+    border-radius: 10px;
+    margin-left: 18%;
+}
+
+.btn{
+    background: rgb(255, 202, 210);
+    border:1px solid rgb(255, 202, 210);
+    color: rgb(82, 21, 21);
+}
+
+.btn:hover{
+    background: rgb(243, 162, 174);
+    box-shadow: 1px 1px 10px 1px #d2cece;
+}
+
+.myDialog{
+    border: 2px solid rgb(253, 179, 179);
+    border-radius: 15px;
+    padding: 50px;
+    background: rgb(255, 229, 233);
+    color: rgb(82, 21, 21);
+
+    & h3{
+        margin-bottom: 20px;
+    }
+}
+

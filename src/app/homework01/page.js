@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 import styles from "./homework1.module.css";
 
-export default function Homework() {
+export default function Homework1() {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
 

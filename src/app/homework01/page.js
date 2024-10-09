@@ -1,21 +1,21 @@
-"use client"; // 在瀏覽器進行渲染，可以使用hooks
+'use client' // 在瀏覽器進行渲染，可以使用hooks
 
-import Image from "next/image";
-import { useState, useRef } from "react";
-import styles from "./homework1.module.css";
+import Image from 'next/image'
+import { useRef, useState } from 'react'
+import styles from './homework1.module.css'
 
 export default function Homework1() {
-  const [isOpen, setIsOpen] = useState(false);
-  const ref = useRef(null);
+  const [isOpen, setIsOpen] = useState(false)
+  const ref = useRef(null)
 
   const openDialog = () => {
-    setIsOpen(true);
-    ref.current.showModal();
-  };
+    setIsOpen(true)
+    ref.current.showModal()
+  }
   const closeDialog = () => {
-    setIsOpen(false);
-    ref.current.close();
-  };
+    setIsOpen(false)
+    ref.current.close()
+  }
 
   return (
     <>
@@ -35,5 +35,5 @@ export default function Homework1() {
         </button>
       </dialog>
     </>
-  );
+  )
 }

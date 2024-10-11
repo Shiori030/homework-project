@@ -8,9 +8,17 @@ DialogLayout.defaultProps = {
   title: '默認標題',
   content: '默認內容',
   btnContent: '關閉',
+  styles: {
+    dialog: 'lex flex-col w-96 rounded-2xl shadow-md h-80 p-5 [&:not([open])]:hidden bg-red-100 text-red-900',
+    title: 'flex justify-between flex-nowrap text-2xl border-b-2 pb-1 border-[#b098986b]',
+    titleBtn: 'text-[#BEBEBE]',
+    content: 'mt-3 text-lg text-justify',
+    footer: 'flex justify-center mt-auto',
+    footerBtn: 'bg-[#ff988ced] rounded-2xl py-2 px-5 text-xl hover:shadow-lg hover:bg-[#FFB5B5] transition-all duration-300',
+  },
 }
 
-export default function DialogLayout({ isOpen, onClose, title, content, btnContent }) {
+export default function DialogLayout({ isOpen, onClose, title, content, btnContent, styles }) {
   const dialogRef = useRef(null)
   const [isRendered, setIsRendered] = useState(false)
 
@@ -35,10 +43,10 @@ export default function DialogLayout({ isOpen, onClose, title, content, btnConte
     return null
 
   return (
-    <dialog className="flex flex-col bg-red-100 w-96 rounded-2xl shadow-md h-80 p-5 [&:not([open])]:hidden text-red-950" ref={dialogRef}>
-      <DialogTitle>{title}</DialogTitle>
-      <DialogContent>{content}</DialogContent>
-      <DialogFooter onClose={onClose}>{btnContent}</DialogFooter>
+    <dialog className={`${styles.dialog}`} ref={dialogRef}>
+      <DialogTitle titleStyles={`${styles.title}`} titleBtn={`${styles.titleBtn}`} onClose={onClose}>{title}</DialogTitle>
+      <DialogContent contentStyles={`${styles.content}`}>{content}</DialogContent>
+      <DialogFooter footerStyles={`${styles.footer}`} footerBtn={`${styles.footerBtn}`} onClose={onClose}>{btnContent}</DialogFooter>
     </dialog>
   )
 }

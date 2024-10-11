@@ -1,5 +1,5 @@
-export default function DialogContent({ children }) {
+export default function DialogContent({ children, contentStyles }) {
   return (
-    <div className="mt-3 text-lg text-justify">{children}</div>
+    <div className={`${contentStyles}`}>{children}</div>
   )
 }

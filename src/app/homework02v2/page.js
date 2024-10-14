@@ -1,5 +1,5 @@
 'use client' // 在瀏覽器進行渲染，可以使用hooks
-import Summary from '@/components/summary/summaryLayout'
+import Summary from '@/components/summary/summary'
 
 export default function Homework2 () {
   const data = [{
@@ -12,6 +12,18 @@ export default function Homework2 () {
     summary: '烏薩奇',
     details: '是一隻兔子角色，以靈活的兔耳和強大的戰鬥力著稱。它充滿活力且搞怪，是故事中的解難擔當，總能在朋友遇到困難時出手相助。'
   }]
+
+  // const dataTest = [{
+  //   summary: '小桃鼠',
+  //   details: '是以「飛鼠」作為角色原型。小小的身體、蓬鬆的尾巴，不斷試圖裝可愛、裝可憐來要求別人誇獎牠、哄牠。在故事中是個任性、理直氣壯的角色'
+  // }, {
+  //   summary: '栗子饅頭',
+  //   details: '栗子饅頭是個美食家，行為舉止就像個大叔，也是吉伊卡哇的前輩。經常會料理出美味的下酒菜來配酒，喝的時候會向人喝完啤酒後爽吐一口「哈~~」的聲音。'
+  // },
+  // {
+  //   summary: '海獺勇者',
+  //   details: '角色原型就是「海獺」，是吉伊卡哇世界中的討伐排行榜冠軍，是被大家所崇拜且憧憬的角色。大家看到海獺勇者都會熱情的歡呼，用崇拜的眼神看著牠。'
+  // }]
 
   return (
     <>

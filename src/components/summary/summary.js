@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import SummaryDetails from './SammaryDetails'
+import SummaryDetails from './sammaryDetails'
 import SummaryTitle from './summaryTitle'
 
 // 此組件默認的props
@@ -21,13 +20,15 @@ Summary.defaultProps = {
   ]
 }
 
-export default function Summary ({ title, data }) {
+export default function Summary ({ titleComponents, detailsComponents: DetailsComponent, iconComponents, data, title, icon }) {
   return (
     <>
       <div className="w-1/3 bg-[#def2ff] text-[#003385] rounded-xl p-5 ">
-        <SummaryTitle>{title}</SummaryTitle>
+        {titleComponents || <SummaryTitle>{title}</SummaryTitle>}
         {data.map((item, index) => (
-          <SummaryDetails key={index} data={item} />
+          DetailsComponent
+            ? <DetailsComponent key={index} data={item} icon={icon} iconComponents={iconComponents} />
+            : <SummaryDetails key={index} data={item} icon={icon} iconComponents={iconComponents} />
         ))}
       </div>
     </>

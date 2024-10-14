@@ -20,7 +20,7 @@ export default function Homework2() {
         </details>
         <details className={`${styles.role}`}>
           <summary className={`${styles.name}`}>烏薩奇</summary>
-          <p className={`${styles.detail}`}>以白色倉鼠為原型，性格膽小害羞，但內心充滿愛與關懷，是漫畫中的主角之一。開心時，它會哼起歌來，並喜歡抱著自己的小熊玩偶入睡。</p>
+          <p className={`${styles.detail}`}>是一隻兔子角色，以靈活的兔耳和強大的戰鬥力著稱。它充滿活力且搞怪，是故事中的解難擔當，總能在朋友遇到困難時出手相助。</p>
           <Image className={`${styles.photo}`} src="/usagi.webp" alt="usagi" width={60} height={60} />
         </details>
       </div>

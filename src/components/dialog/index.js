@@ -16,8 +16,20 @@ export default function Dialog ({ isOpen, onClose, headerComponents, contentComp
     }
   }, [isOpen])
 
+  const handleClick = (e) => {
+    const dialogPosition = dialogRef.current.getBoundingClientRect()
+    if (
+      e.clientX < dialogPosition.left ||
+      e.clientX > dialogPosition.right ||
+      e.clientY < dialogPosition.top ||
+      e.clientY > dialogPosition.bottom
+    ) {
+      onClose()
+    }
+  }
+
   return (
-    <dialog className={'flex flex-col w-96 rounded-2xl shadow-md h-80 p-5 [&:not([open])]:hidden bg-red-100 text-red-900'} ref={dialogRef}>
+    <dialog className={'flex h-80 w-96 flex-col rounded-2xl bg-red-100 p-5 text-red-900 shadow-md [&:not([open])]:hidden'} ref={dialogRef} onClick={handleClick}>
         {headerComponents || <DialogHeader onClose={onClose}>{title}</DialogHeader>}
         {contentComponents || <DialogContent>{content}</DialogContent>}
         {footerComponents || <DialogFooter onClose={onClose}>{buttonContent}</DialogFooter>}

@@ -9,14 +9,14 @@ export default function Homework1 () {
   return (
     <>
       <button
-        className="bg-red-300 text-red-900 w-80 text-2xl p-5 m-10 rounded-xl hover:shadow-lg hover:bg-[#FFB5B5] transition-all duration-300"
-        onClick={() => setIsOpen(true)}
+        className="m-10 w-80 rounded-xl bg-red-300 p-5 text-2xl text-red-900 transition-all duration-300 hover:bg-[#FFB5B5] hover:shadow-lg"
+        onClick={() => setIsOpen(!isOpen)}
       >
         我要背論語
       </button>
       <Dialog
       isOpen={isOpen}
-      onClose={() => setIsOpen(false)}
+      onClose={() => setIsOpen(!isOpen)}
       title="每日論語"
       contentComponents={<DialogTest/>}
       />

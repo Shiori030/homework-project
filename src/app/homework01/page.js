@@ -1,39 +1,25 @@
-'use client' // 在瀏覽器進行渲染，可以使用hooks
+'use client'
+import Dialog from '@/components/dialog'
+import DialogTest from '@/components/dialog/dialogTest'
+import { useState } from 'react'
 
-import Image from 'next/image'
-import { useRef, useState } from 'react'
-import styles from './homework1.module.css'
-
-export default function Homework1() {
+export default function Homework1 () {
   const [isOpen, setIsOpen] = useState(false)
-  const ref = useRef(null)
-
-  const openDialog = () => {
-    setIsOpen(true)
-    ref.current.showModal()
-  }
-  const closeDialog = () => {
-    setIsOpen(false)
-    ref.current.close()
-  }
 
   return (
     <>
       <button
-        className={`${styles.openBtn} ${styles.btn}`}
-        onClick={openDialog}
+        className="bg-red-300 text-red-900 w-80 text-2xl p-5 m-10 rounded-xl hover:shadow-lg hover:bg-[#FFB5B5] transition-all duration-300"
+        onClick={() => setIsOpen(true)}
       >
-        Click
+        我要背論語
       </button>
-      <dialog ref={ref} className={styles.myDialog}>
-        <Image src="/momo.jpg" alt="Momo" width={300} height={300} />
-        <button
-          className={`${styles.closeBtn} ${styles.btn}`}
-          onClick={closeDialog}
-        >
-          關閉
-        </button>
-      </dialog>
+      <Dialog
+      isOpen={isOpen}
+      onClose={() => setIsOpen(false)}
+      title="每日論語"
+      contentComponents={<DialogTest/>}
+      />
     </>
   )
 }

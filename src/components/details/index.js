@@ -7,7 +7,6 @@ export default function Details ({ data = { summary: '默認名稱', details: '�
   const handleClick = (e) => {
     e.preventDefault()
     setIsOpen(!isOpen)
-    console.log(isOpen)
   }
 
   const renderComponent = (Component, props, defaultComponent) => {

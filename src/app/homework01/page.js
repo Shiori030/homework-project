@@ -2,6 +2,7 @@
 import Dialog from '@/components/dialog'
 import DialogTest from './dialogTest'
 import { useState } from 'react'
+import DialogHeaderTest from './dialogHeaderTest'
 
 export default function Homework1 () {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,7 +19,8 @@ export default function Homework1 () {
       isOpen={isOpen}
       onClose={() => setIsOpen(!isOpen)}
       title="每日論語"
-      contentComponents={<DialogTest/>}
+      customHeader={<DialogHeaderTest>測試用的Header</DialogHeaderTest>}
+      customContent={<DialogTest/>}
       />
     </>
   )

@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import DialogContent from './dialogContent'
 import DialogFooter from './dialogFooter'
 import DialogHeader from './dialogHeader'
 
-export default function Dialog ({ isOpen, onClose, headerComponents, contentComponents, footerComponents, title = '默認標題', content = '默認內容', buttonContent = '關閉', className }) {
+export default function Dialog ({ isOpen, onClose, customHeader, customContent, customFooter, title = '默認標題', content = '默認內容', buttonContent = '關閉', className }) {
   const dialogRef = useRef(null)
 
   useEffect(() => {
@@ -28,13 +28,20 @@ export default function Dialog ({ isOpen, onClose, headerComponents, contentComp
     }
   }
 
+  const renderComponent = (Component, props, defaultComponent) => {
+    if (React.isValidElement(Component)) {
+      return React.cloneElement(Component, props)
+    }
+    return defaultComponent
+  }
+
   const dialogClassName = `flex h-80 w-96 flex-col rounded-2xl bg-red-100 p-5 text-red-900 shadow-md [&:not([open])]:hidden ${className || ' '}`
 
   return (
     <dialog className={dialogClassName} ref={dialogRef} onClick={handleClick}>
-        {headerComponents || <DialogHeader onClose={onClose}>{title}</DialogHeader>}
-        {contentComponents || <DialogContent>{content}</DialogContent>}
-        {footerComponents || <DialogFooter onClose={onClose}>{buttonContent}</DialogFooter>}
+      {renderComponent(customHeader, { onClose, title }, <DialogHeader onClose={onClose}>{title}</DialogHeader>)}
+      {renderComponent(customContent, { content }, <DialogContent>{content}</DialogContent>)}
+      {renderComponent(customFooter, { onClose, buttonContent }, <DialogFooter onClose={onClose}>{buttonContent}</DialogFooter>)}
     </dialog>
   )
 }

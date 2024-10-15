@@ -3,7 +3,7 @@ import DialogContent from './dialogContent'
 import DialogFooter from './dialogFooter'
 import DialogHeader from './dialogHeader'
 
-export default function Dialog ({ isOpen, onClose, headerComponents, contentComponents, footerComponents, title = '默認標題', content = '默認內容', buttonContent = '關閉' }) {
+export default function Dialog ({ isOpen, onClose, headerComponents, contentComponents, footerComponents, title = '默認標題', content = '默認內容', buttonContent = '關閉', className }) {
   const dialogRef = useRef(null)
 
   useEffect(() => {
@@ -28,8 +28,10 @@ export default function Dialog ({ isOpen, onClose, headerComponents, contentComp
     }
   }
 
+  const dialogClassName = `flex h-80 w-96 flex-col rounded-2xl bg-red-100 p-5 text-red-900 shadow-md [&:not([open])]:hidden ${className || ' '}`
+
   return (
-    <dialog className={'flex h-80 w-96 flex-col rounded-2xl bg-red-100 p-5 text-red-900 shadow-md [&:not([open])]:hidden'} ref={dialogRef} onClick={handleClick}>
+    <dialog className={dialogClassName} ref={dialogRef} onClick={handleClick}>
         {headerComponents || <DialogHeader onClose={onClose}>{title}</DialogHeader>}
         {contentComponents || <DialogContent>{content}</DialogContent>}
         {footerComponents || <DialogFooter onClose={onClose}>{buttonContent}</DialogFooter>}

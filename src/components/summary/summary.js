@@ -23,7 +23,7 @@ Summary.defaultProps = {
 export default function Summary ({ titleComponents, detailsComponents: DetailsComponent, iconComponents, data, title, icon }) {
   return (
     <>
-      <div className="w-1/3 bg-[#def2ff] text-[#003385] rounded-xl p-5 ">
+      <div className="w-1/3 rounded-xl bg-[#def2ff] p-5 text-[#003385] ">
         {titleComponents || <SummaryTitle>{title}</SummaryTitle>}
         {data.map((item, index) => (
           DetailsComponent

@@ -14,11 +14,11 @@ export default function SummaryTest ({ data, iconComponents, icon }) {
   return (
         <>
             <details open={isOpen}>
-                <summary onClick={handleClick} className={`flex flex-row justify-between transition-colors duration-300 text-xl list-none p-3 rounded-lg ${isOpen ? 'mb-0 rounded-b-none bg-[#f4a9ff]' : 'mb-2  bg-[#ffcbfd]'} `}>
+                <summary onClick={handleClick} className={`flex list-none flex-row justify-between rounded-lg p-3 text-xl transition-colors duration-300 ${isOpen ? 'mb-0 rounded-b-none bg-[#f4a9ff]' : 'mb-2  bg-[#ffcbfd]'} `}>
                     <div>{data.summary}</div>
                     {iconComponents || <ArrowIcon isOpen={isOpen} icon={icon} />}
                 </summary>
-                <p className="p-3 mb-2 border bg-white rounded-b-lg">{data.details}</p>
+                <p className="mb-2 rounded-b-lg border bg-white p-3">{data.details}</p>
             </details>
         </>
   )

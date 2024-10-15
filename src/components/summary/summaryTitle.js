@@ -1,7 +1,7 @@
 export default function SummaryTitle ({ children }) {
   return (
     <>
-      <div className="text-2xl mb-3">
+      <div className="mb-3 text-2xl">
         {children}
       </div>
     </>

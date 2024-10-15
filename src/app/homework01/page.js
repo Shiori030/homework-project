@@ -1,6 +1,6 @@
 'use client'
 import Dialog from '@/components/dialog'
-import DialogTest from '@/components/dialog/dialogTest'
+import DialogTest from './dialogTest'
 import { useState } from 'react'
 
 export default function Homework1 () {

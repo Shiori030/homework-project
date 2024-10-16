@@ -17,13 +17,7 @@ export default function Dialog ({ isOpen, onClose, customHeader, customContent, 
   }, [isOpen])
 
   const handleClick = (e) => {
-    const dialogPosition = dialogRef.current.getBoundingClientRect()
-    if (
-      e.clientX < dialogPosition.left ||
-      e.clientX > dialogPosition.right ||
-      e.clientY < dialogPosition.top ||
-      e.clientY > dialogPosition.bottom
-    ) {
+    if (e.target === dialogRef.current) {
       onClose()
     }
   }
@@ -35,13 +29,15 @@ export default function Dialog ({ isOpen, onClose, customHeader, customContent, 
     return defaultComponent
   }
 
-  const dialogClassName = `flex h-80 w-96 flex-col rounded-2xl bg-red-100 p-5 text-red-900 shadow-md [&:not([open])]:hidden ${className || ' '}`
+  const dialogClassName = `flex relative h-80 w-96 flex-col rounded-2xl bg-red-100 text-red-900 shadow-md [&:not([open])]:hidden ${className || ' '}`
 
   return (
-    <dialog className={dialogClassName} ref={dialogRef} onClick={handleClick}>
-      {renderComponent(customHeader, { onClose, title }, <DialogHeader onClose={onClose}>{title}</DialogHeader>)}
-      {renderComponent(customContent, { content }, <DialogContent>{content}</DialogContent>)}
-      {renderComponent(customFooter, { onClose, buttonContent }, <DialogFooter onClose={onClose}>{buttonContent}</DialogFooter>)}
+    <dialog className={dialogClassName} ref={dialogRef} onClick={handleClick} onCancel={onClose}>
+      <div className='absolute inset-0'>
+        {renderComponent(customHeader, { onClose, title }, <DialogHeader onClose={onClose}>{title}</DialogHeader>)}
+        {renderComponent(customContent, { content }, <DialogContent>{content}</DialogContent>)}
+        {renderComponent(customFooter, { onClose, buttonContent }, <DialogFooter onClose={onClose}>{buttonContent}</DialogFooter>)}
+      </div>
     </dialog>
   )
 }

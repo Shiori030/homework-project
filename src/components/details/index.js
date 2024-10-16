@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import renderComponent from '../../../utils/renderComponent'
 
 export default function Details ({ data = { summary: '默認名稱', details: '默認詳細' }, summaryStyles, detailsStyles, customIcon, icon, openStyles, closeStyles }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -6,13 +7,6 @@ export default function Details ({ data = { summary: '默認名稱', details: '�
   const handleClick = (e) => {
     e.preventDefault()
     setIsOpen(!isOpen)
-  }
-
-  const renderComponent = (Component, props, defaultComponent) => {
-    if (React.isValidElement(Component)) {
-      return React.cloneElement(Component, props)
-    }
-    return defaultComponent
   }
 
   const openClassName = `mb-0 rounded-b-none bg-[#7dc1eb] ${openStyles || ' '}`

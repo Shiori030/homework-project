@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import DialogContent from './dialogContent'
 import DialogFooter from './dialogFooter'
 import DialogHeader from './dialogHeader'
+import renderComponent from '../../../utils/renderComponent'
 
 export default function Dialog ({ isOpen, onClose, customHeader, customContent, customFooter, title = '默認標題', content = '默認內容', buttonContent = '關閉', className }) {
   const dialogRef = useRef(null)
@@ -20,13 +21,6 @@ export default function Dialog ({ isOpen, onClose, customHeader, customContent, 
     if (e.target === dialogRef.current) {
       onClose()
     }
-  }
-
-  const renderComponent = (Component, props, defaultComponent) => {
-    if (React.isValidElement(Component)) {
-      return React.cloneElement(Component, props)
-    }
-    return defaultComponent
   }
 
   const dialogClassName = `flex relative h-80 w-96 flex-col rounded-2xl bg-red-100 text-red-900 shadow-md [&:not([open])]:hidden ${className || ' '}`

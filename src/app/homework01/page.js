@@ -19,13 +19,13 @@ export default function Homework1 () {
       <Dialog
       isOpen={isOpen}
       onClose={() => setIsOpen(!isOpen)}
-      title="每日論語"
+      // title="每日論語"
       // customHeader={<DialogHeaderTest>測試用的Header</DialogHeaderTest>}
-      customHeader={(onClose) => {
+      customHeader={() => {
         return (
           <div className={'m-5 flex flex-nowrap justify-between border-b-2 border-[#b098986b] pb-1 text-2xl'}>
             測試用的Header
-            <button className={'text-[#BEBEBE]'} type="button" onClick={onClose}>
+            <button className={'text-[#BEBEBE]'} type="button" onClick={() => setIsOpen(!isOpen)}>
               <FontAwesomeIcon icon={faXmark} />
             </button>
           </div>

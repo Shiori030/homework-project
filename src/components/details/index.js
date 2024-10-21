@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import renderComponent from '../../../utils/renderComponent'
 
 export default function Details ({ data = { summary: '默認名稱', details: '默認詳細' }, summaryStyles, detailsStyles, customIcon, icon, openStyles, closeStyles }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +18,7 @@ export default function Details ({ data = { summary: '默認名稱', details: '�
       <details open={isOpen}>
         <summary onClick={handleClick} className={summaryClassName}>
           <div>{data.summary}</div>
-          {renderComponent(customIcon, { isOpen, icon }, <div className={`duration-300 ease-in-out ${isOpen ? 'rotate-90' : 'rotate-0'}`}> {icon || '▶'} </div>)}
+          {customIcon ? customIcon({ isOpen, icon }) : <div className={`duration-300 ease-in-out ${isOpen ? 'rotate-90' : 'rotate-0'}`}> {icon || '▶'} </div>}
         </summary>
         <p className={detailsClassName}>{data.details}</p>
       </details>

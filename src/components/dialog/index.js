@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import DialogContent from './dialogContent'
 import DialogFooter from './dialogFooter'
 import DialogHeader from './dialogHeader'
-import renderComponent from '../../../utils/renderComponent'
 
 export default function Dialog ({ isOpen, onClose, customHeader, customContent, customFooter, title = '默認標題', content = '默認內容', buttonContent = '關閉', className }) {
   const dialogRef = useRef(null)
@@ -28,9 +27,9 @@ export default function Dialog ({ isOpen, onClose, customHeader, customContent, 
   return (
     <dialog className={dialogClassName} ref={dialogRef} onClick={handleClick} onCancel={onClose}>
       <div className='absolute inset-0'>
-        {renderComponent(customHeader, { onClose, title }, <DialogHeader onClose={onClose}>{title}</DialogHeader>)}
-        {renderComponent(customContent, { content }, <DialogContent>{content}</DialogContent>)}
-        {renderComponent(customFooter, { onClose, buttonContent }, <DialogFooter onClose={onClose}>{buttonContent}</DialogFooter>)}
+        {customHeader ? customHeader({ onClose, title }) : <DialogHeader>{title}</DialogHeader>}
+        {customContent ? customContent({ content }) : <DialogContent>{content}</DialogContent>}
+        {customFooter ? customFooter({ onClose, buttonContent }) : <DialogFooter onClose={onClose}>{buttonContent}</DialogFooter>}
       </div>
     </dialog>
   )

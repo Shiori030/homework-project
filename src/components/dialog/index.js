@@ -22,7 +22,7 @@ export default function Dialog ({ isOpen, onClose, customHeader, customContent, 
     }
   }
 
-  const dialogClassName = `flex relative h-80 w-96 flex-col rounded-2xl bg-red-100 text-red-900 shadow-md [&:not([open])]:hidden ${className || ' '}`
+  const dialogClassName = `flex relative h-80 w-96 flex-col rounded-2xl bg-red-100 text-red-900 shadow-md [&:not([open])]:hidden ${className || ''}`
 
   return (
     <dialog className={dialogClassName} ref={dialogRef} onClick={handleClick} onCancel={onClose}>
